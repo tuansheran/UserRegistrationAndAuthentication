@@ -17,13 +17,21 @@ function App() {
 
   const registred = {
     fullName: fullName,
-    username: userName,
+    userName: userName,
     email: email,
     password: password
   }
+
+  try{
+    axios.post('http://localhost:4000/app/singup', registred)
+    .then(respone => console.log(respone.data));
+
+  }catch(error){
+    console.log(error)
+  }
+
+  console.log(fullName)
   
-  axios.post('http://localhost:4000/app/singup', registred)
-  .then(respone => console.log(respone.data));
 
   return (
     <div className="App">
@@ -38,7 +46,7 @@ function App() {
           <br/>
           <input onChange={(e)=>{setPassword(e.target.value)}}/>
           <br/>
-          <button>Submit Data</button>
+          <button type='submit'>Submit Data</button>
         </form>
         {/* <h1>Hello</h1> */}
       </div>
@@ -47,4 +55,4 @@ function App() {
   );
 }
 
-export default A
+export default App;
